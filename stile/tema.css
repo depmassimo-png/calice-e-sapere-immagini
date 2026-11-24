@@ -246,3 +246,8 @@ html .home-lato .diario li{padding:10px 0}
 html .home-lato .diario li a{font-family:var(--display);font-size:1.08rem;line-height:1.25}
 html .banner + .home-grid{margin-top:0}
 @media (max-width:900px){html .home-grid{display:block}html .home-main section.blk{padding:48px 0}html .home-lato{border-left:0;border-top:1px solid #ddd;padding:40px 0 48px}}
+
+/* Punto 1 del confronto con Quanta (24/11/2026): immagini delle schede delle rubriche tutte nello stesso formato orizzontale 3:2.
+   L'immagine riempie il riquadro e viene ritagliata; resta valido l'object-position scritto nella pagina (es. ritratto della marchesa). */
+html .rub-img{position:relative;height:auto;aspect-ratio:3/2;overflow:hidden}
+html .rub-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
