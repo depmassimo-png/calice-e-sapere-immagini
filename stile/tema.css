@@ -132,7 +132,7 @@ html .mappa-sito a:hover{color:var(--accento)}
 html .ca-shot img{box-shadow:0 18px 40px rgba(0,0,0,.25)}
 
 /* Illustrazioni della home (Krea 3 + apertura Gemini, 23/11/2026) */
-html #p-home .banner .art[data-ill="hero"]{background:#14213d url(/img/tema/hero.avif) center 45%/cover no-repeat}
+html #p-home .banner .art[data-ill="hero"]{background:#14213d url(/img/tema/hero.avif) center 75%/cover no-repeat}
 html #p-home .tile .pic{background-color:#14213d;background-position:center;background-size:cover;background-repeat:no-repeat}
 html #p-home .tile .pic[data-ill="vineTile"]{background-image:url(/img/tema/vigna.avif)}
 html #p-home .tile .pic[data-ill="cellarTile"]{background-image:url(/img/tema/cantina.avif)}
