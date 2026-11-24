@@ -1,0 +1,220 @@
+/* Calice e Sapere - tema "rivista illustrata" (laboratorio, 23 nov 2026).
+   Strato separato: si carica dopo tutti gli altri stili. Togliendo questo file e build-tema.js il sito torna com'era.
+   Ogni selettore inizia con "html" per vincere sugli stili scritti dentro le pagine. */
+:root{--nero:#ffffff;--avorio:#111111;--inchiostro:#111111;--oro:#c41e3a;--bordeaux:#c41e3a;--vinaccia:#f3f2ef;--grigio:#666666;--linea:#dddddd;--notte:#14213d;--accento:#c41e3a;--display:"Gloock",Georgia,serif;--body:"Source Serif 4",Georgia,serif;--sans:"Instrument Sans",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;color-scheme:light}
+html body{background:#fff;color:#111;font-family:var(--body);font-size:18px;line-height:1.6}
+html a{color:#111}
+html a:hover{color:var(--accento)}
+html h1,html h2,html h3,html h4{font-family:var(--display);font-weight:400;letter-spacing:-.005em;color:#111}
+html h1{font-size:clamp(2.4rem,5.2vw,4rem);line-height:1.03}
+html h2{font-size:clamp(1.8rem,3.4vw,2.6rem);line-height:1.08}
+html h3{line-height:1.15}
+html a:focus-visible,html button:focus-visible{outline:2px solid var(--accento)}
+
+/* Etichette: piccole, spaziate, sottolineate col colore d'accento */
+html .eyebrow,html .acat,html .qtema,html .mappa-sito .ms-t{display:inline-block;justify-self:start;align-self:start;width:fit-content;font-family:var(--sans);font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#333;border-bottom:2px solid var(--accento);padding-bottom:3px;text-decoration:none}
+html section.chiaro .eyebrow,html .rub-card .eyebrow,html .eventi .eyebrow{color:#333}
+
+/* Testata */
+html header.top{background:#fff;backdrop-filter:none;border-bottom:1px solid #111}
+html .top .wrap{height:72px}
+html .brand{font-family:var(--display);font-weight:400;font-size:1.55rem;color:#111}
+html .brand svg path,html .brand svg rect,html .brand svg circle{stroke:#111}
+html nav.main a,html .barra>a,html .barra summary,html .mobi>a,html .mobi summary,html .mobi .sotto a,html .barra .giu a{font-family:var(--sans);font-weight:600;color:#111}
+html .barra>a,html .barra summary{font-size:.95rem}
+html .barra>a:hover,html .barra summary:hover,html .barra details[open]>summary,html .barra .giu a:hover{background:transparent;color:#111;text-decoration:underline;text-underline-offset:6px}
+html .barra>a.on,html .barra details.on>summary,html nav.main a.on,html .mobi a.on,html .barra .giu a.on{background:transparent;color:#111;text-decoration:underline;text-decoration-color:var(--accento);text-decoration-thickness:2px;text-underline-offset:6px}
+html .barra>a.app,html nav.main a.app,html .mobi>a.app{border:1.5px solid #111;border-radius:0;color:#111}
+html .barra .giu,html .mobi,html nav.main{background:#fff;border:1px solid #111;border-radius:0;box-shadow:0 12px 30px rgba(0,0,0,.12)}
+html .mobi summary::after{color:var(--accento)}
+html .menu-btn{border:1.5px solid #111;border-radius:0;color:#111;font-family:var(--sans)}
+
+/* Aperture delle pagine: l'illustrazione a tutta larghezza, il titolo sotto */
+html .banner{display:flex;flex-direction:column;min-height:0!important;border-bottom:1px solid #111;background:#fff}
+html .banner .art{position:relative;inset:auto;height:clamp(260px,42vw,560px);background:var(--notte)}
+html .banner .shade{display:none}
+html .banner .wrap{width:100%}
+html .banner .txt{padding:36px 0 44px!important;max-width:860px;color:#111}
+html .banner .txt h1{color:#111}
+html .banner .txt p.lead{color:#555;font-style:italic;font-size:1.25rem;max-width:40em}
+html .banner .txt .eyebrow{margin-bottom:16px}
+html .link-novita a{font-family:var(--sans);font-weight:600}
+
+/* Sezioni: tutto su bianco, separate da un filetto */
+html section.blk{background:#fff;color:#111;padding:64px 0;border-top:1px solid #ddd}
+html section.chiaro{background:#fff;color:#111}
+html section.vino{background:var(--notte);color:#fff}
+html section.vino h1,html section.vino h2,html section.vino h3,html section.vino a{color:#fff}
+html section.vino .eyebrow,html section.vino .acat{color:#fff;border-bottom-color:#e8c547}
+html section.vino .muted,html section.vino .small{color:#dfe4ee;opacity:1}
+html .head{margin-bottom:28px}
+html .head p{font-style:italic;color:#555;opacity:1}
+
+/* Pulsanti: rettangoli netti */
+html .btn,html section.chiaro .btn{background:#111;color:#fff;border-radius:0;font-family:var(--sans);font-weight:700;padding:13px 22px}
+html .btn:hover{background:var(--accento);color:#fff}
+html .btn.ghost,html section.chiaro .btn.ghost,html body[data-page=home] section.chiaro .btn.ghost{background:transparent;color:#111;border:1.5px solid #111}
+html .btn.ghost:hover{border-color:var(--accento);color:var(--accento);background:transparent}
+html section.vino .btn{background:#e8c547;color:#111}
+html section.vino .btn.ghost{background:transparent;color:#fff;border-color:#fff}
+
+/* Schede e riquadri: niente angoli arrotondati, niente barre laterali */
+html .card,html section.chiaro .card,html .acard,html section.vino .acard,html section.blk:not(.chiaro) .acard,html .reg,html .dcard,html .dfull,html .sds,html .ua figure,html .eventi,html .qbox,html .banca .ctrl,html .ripasso details,html .ciak-box,html .note{background:#fff;border:1px solid #ddd;border-radius:0;box-shadow:none}
+html .acard,html section.vino .acard,html section.blk:not(.chiaro) .acard{border:0;border-top:2px solid #111;padding:16px 0 8px;background:transparent;transition:none}
+html section.vino .acard{border-top-color:#fff}
+html .acard:hover{transform:none}
+html .acard:hover h3{text-decoration:underline;text-decoration-color:var(--accento);text-underline-offset:5px}
+html .acard h3{font-size:1.45rem}
+html .acard p{font-style:italic;color:#555;opacity:1}
+html section.vino .acard p{color:#dfe4ee}
+html .dcard,html .dfull{border-left:1px solid #ddd}
+html .dfull.ora{box-shadow:0 0 0 2px var(--accento)}
+html .reg{border-top:1px solid #ddd;border-top:3px solid var(--c,#111)}
+html .trap,html section.chiaro .trap{border:1px solid #ddd;border-radius:0;background:#f7f6f3}
+html .testo blockquote{border-left:0;border-top:2px solid var(--accento);padding:14px 0 0;font-size:1.4rem}
+html .card .k,html .ua b{color:var(--accento)}
+html .limit{border-radius:0;background:var(--notte)}
+html .limit.zero{background:#111}
+
+/* Tappe del percorso: immagini grandi senza cornice */
+html .tile{border-radius:0;border:0;background:transparent;color:#111;grid-template-rows:200px auto;transition:none}
+html body[data-page=home] section.chiaro .tile{color:#111}
+html .tile:hover{transform:none}
+html .tile:hover h3{text-decoration:underline;text-decoration-color:var(--accento);text-underline-offset:5px}
+html .tile .pic{background:var(--notte)}
+html .tile .t{padding:14px 0 6px}
+html .tile .t h3{font-size:1.5rem}
+html .tile .t p{color:#555;font-style:italic}
+
+/* Rubriche in homepage: schede da rivista */
+html .rub-griglia{gap:48px 40px}
+html .rub-card{background:transparent;border:0;border-radius:0;color:#111}
+html .rub-img{height:auto;aspect-ratio:3/2;background:var(--notte)}
+html .rub-tx{padding:16px 0 6px;gap:10px}
+html .rub-card h3{font-size:1.7rem;line-height:1.1}
+html .rub-card h3 a{color:#111}
+html .rub-card h3 a:hover{text-decoration:underline;text-decoration-color:var(--accento);text-underline-offset:5px}
+html .rub-desc{font-family:var(--sans);font-style:normal;font-size:.8rem;color:#666;opacity:1}
+html .rub-sum{font-style:italic;color:#555}
+html .rub-link{padding:6px 0 0;font-family:var(--sans);font-weight:700;color:#111}
+html .rub-link::before{content:"› ";color:var(--accento)}
+
+/* Tabelle, chip, voci */
+html .tbl,html section.chiaro .tbl,html .testo table{background:#fff;border:1px solid #ddd;border-radius:0}
+html th,html section.chiaro th,html .scheda th{font-family:var(--sans);color:#111;font-size:.72rem;letter-spacing:.1em}
+html td,html th{border-color:#e3e3e3}
+html .chip{border-radius:0;font-family:var(--sans);border-color:#bbb}
+html .chip.on,html section.chiaro .chip.on{background:#111;color:#fff;border-color:#111}
+html .steps li::before{background:#111;color:#fff}
+html .glet a{border-radius:0;border-color:#ccc;color:#111}
+html .ggrp h2{border-bottom:2px solid #111}
+html .diario li{border-bottom-color:#e3e3e3}
+html .ameta{font-family:var(--sans);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:#666;opacity:1}
+html .opt{border-radius:0;border-color:#ccc;color:#111;font-family:var(--body)}
+html .opt:hover:not([disabled]){background:#f3f2ef}
+html .ctrl-docg input,html .sdc input[type=text]{border-radius:0;border-color:#999}
+html .mappa path.off{fill:#e7e5e0}
+html .mappa path{stroke:#fff}
+
+/* Novita, consumo responsabile, piede */
+html section.novita{background:#fff;color:#111}
+html section.novita a{color:#111}
+html .respband{background:var(--notte);color:#fff}
+html .respband a{color:#fff}
+html footer{background:#fff;color:#444;border-top:2px solid #111}
+html footer .brand{color:#111}
+html .legal a{color:#111;font-family:var(--sans);font-weight:600}
+html .mappa-sito{border-top:1px solid #ddd;background:#fff}
+html .mappa-sito a{color:#111;font-family:var(--sans)}
+html .mappa-sito a:hover{color:var(--accento)}
+
+/* Telefoni dimostrativi: restano scuri, senza bagliore dorato */
+html .ca-shot img{box-shadow:0 18px 40px rgba(0,0,0,.25)}
+
+/* Illustrazioni della home (Krea 3 + apertura Gemini, 23/11/2026) */
+html #p-home .banner .art[data-ill="hero"]{background:#14213d url(/img/tema/hero.avif) center 45%/cover no-repeat}
+html #p-home .tile .pic{background-color:#14213d;background-position:center;background-size:cover;background-repeat:no-repeat}
+html #p-home .tile .pic[data-ill="vineTile"]{background-image:url(/img/tema/vigna.avif)}
+html #p-home .tile .pic[data-ill="cellarTile"]{background-image:url(/img/tema/cantina.avif)}
+html #p-home .tile .pic[data-ill="pupTile"]{background-image:url(/img/tema/bollicine.avif)}
+html #p-home .tile .pic[data-ill="raisinTile"]{background-image:url(/img/tema/speciali.avif)}
+html #p-home .tile .pic[data-ill="tastTile"]{background-image:url(/img/tema/degustazione.avif)}
+html #p-home .tile .pic[data-ill="langheTile"]{background-image:url(/img/tema/italia.avif)}
+html #p-home .tile .pic[data-ill="chatTile"]{background-image:url(/img/tema/mondo.avif)}
+html #p-home .tile .pic[data-ill="tableTile"]{background-image:url(/img/tema/abbinamento.avif)}
+html #p-home .tile .pic[data-ill="waterTile"]{background-image:url(/img/tema/responsabile.avif)}
+html #p-home .tile .pic[data-ill="quizTile"]{background-image:url(/img/tema/quiz.avif)}
+html #p-home .banner .art[data-ill="hero"] > *,html #p-home .tile .pic[data-ill] > *{display:none}
+html .banner + section.blk{border-top:0}
+
+/* Aperture delle pagine interne (Krea 3, 21:9, 23/11/2026). Chiave data-ill condivisa da pagine sorelle. */
+html .banner .art[data-ill="vineyard"],html .banner .art[data-ill="cellar"],html .banner .art[data-ill="pupitre"],html .banner .art[data-ill="raisin"],html .banner .art[data-ill="tasting"],html .banner .art[data-ill="table"],html .banner .art[data-ill="langhe"],html .banner .art[data-ill="chateau"],html .banner .art[data-ill="water"],html .banner .art[data-ill="quizArt"]{background-color:#14213d;background-position:center;background-size:cover;background-repeat:no-repeat}
+html .banner .art[data-ill="vineyard"]{background-image:url(/img/tema/a-vigna.avif)}
+html .banner .art[data-ill="cellar"]{background-image:url(/img/tema/a-cantina.avif)}
+html .banner .art[data-ill="pupitre"]{background-image:url(/img/tema/a-bollicine.avif);background-size:contain;background-color:#152446}
+html .banner .art[data-ill="raisin"]{background-image:url(/img/tema/a-speciali.avif)}
+html .banner .art[data-ill="tasting"]{background-image:url(/img/tema/a-degustazione.avif)}
+html .banner .art[data-ill="table"]{background-image:url(/img/tema/a-abbinamento.avif)}
+html .banner .art[data-ill="langhe"]{background-image:url(/img/tema/a-italia.avif)}
+html .banner .art[data-ill="chateau"]{background-image:url(/img/tema/a-mondo.avif)}
+html .banner .art[data-ill="water"]{background-image:url(/img/tema/a-responsabile.avif)}
+html .banner .art[data-ill="quizArt"]{background-image:url(/img/tema/a-quiz.avif)}
+html .banner .art[data-ill="vineyard"] > *,html .banner .art[data-ill="cellar"] > *,html .banner .art[data-ill="pupitre"] > *,html .banner .art[data-ill="raisin"] > *,html .banner .art[data-ill="tasting"] > *,html .banner .art[data-ill="table"] > *,html .banner .art[data-ill="langhe"] > *,html .banner .art[data-ill="chateau"] > *,html .banner .art[data-ill="water"] > *,html .banner .art[data-ill="quizArt"] > *{display:none}
+
+/* Aperture delle rubriche (Krea 3, 21:9, 23/11/2026). Le rubriche usano la chiave generica "cellar": qui ognuna prende la sua immagine, le botti restano solo sulle pagine della cantina. */
+html body[data-page="biblioteca"] .banner .art,html body[data-page="biografie"] .banner .art,html body[data-page="visite"] .banner .art,html body[data-page="voci-del-vino"] .banner .art,html body[data-page="frasi"] .banner .art,html body[data-page="numeri"] .banner .art,html body[data-page="novita"] .banner .art,html body[data-page="glossario"] .banner .art{background-color:#14213d;background-position:center;background-size:cover;background-repeat:no-repeat}
+html body[data-page="biblioteca"] .banner .art{background-image:url(/img/tema/r-biblioteca.avif)}
+html body[data-page="biografie"] .banner .art{background-image:url(/img/tema/r-biografie.avif)}
+html body[data-page="visite"] .banner .art{background-image:url(/img/tema/r-visite.avif)}
+html body[data-page="voci-del-vino"] .banner .art{background-image:url(/img/tema/r-voci.avif)}
+html body[data-page="frasi"] .banner .art{background-image:url(/img/tema/r-frasi.avif)}
+html body[data-page="numeri"] .banner .art{background-image:url(/img/tema/r-numeri.avif)}
+html body[data-page="novita"] .banner .art{background-image:url(/img/tema/r-novita.avif)}
+html body[data-page="glossario"] .banner .art{background-image:url(/img/tema/r-glossario.avif)}
+html body[data-page="biblioteca"] .banner .art > *,html body[data-page="biografie"] .banner .art > *,html body[data-page="visite"] .banner .art > *,html body[data-page="voci-del-vino"] .banner .art > *,html body[data-page="frasi"] .banner .art > *,html body[data-page="numeri"] .banner .art > *,html body[data-page="novita"] .banner .art > *,html body[data-page="glossario"] .banner .art > *{display:none}
+
+/* Telefono: le aperture si vedono intere (niente tagli ai lati), un po' piu basse. */
+@media (max-width:700px){html .banner .art{height:auto!important;aspect-ratio:21/9}html #p-home .banner .art[data-ill="hero"]{aspect-ratio:16/9}}
+
+/* Correzioni dall'audit del 24/11/2026: testi scuri rimasti su fondi scuri dopo il cambio dei colori. */
+html .limit{color:#fff}
+html .ua figure[style]{background:var(--notte)!important;color:#fff!important}
+html .ua figure[style] b{color:#fff!important}
+html section.vino.novita .eyebrow{color:#333;border-bottom-color:var(--accento)}
+html section.vino .head p{color:#dfe4ee}
+html section.chiaro a{color:#111}
+html .barra>a.app.on,html .mobi>a.app.on,html nav.main a.app.on{color:#111}
+html section.vino a:focus-visible,html section.vino button:focus-visible,html .respband a:focus-visible{outline-color:#fff}
+html svg text[fill="#f4ede2"]{fill:#111}
+html svg text[fill="#c9a24a"]{fill:#7a5a14}
+html svg text[fill="#8f7f84"]{fill:#666}
+
+/* Aperture col vecchio fondo scuro scritto nella pagina (CantinApp, Quiz Sommelier e simili): bianche come le altre.
+   I telefoni dimostrativi tengono i colori dell'app. */
+html .banner[style*="background"]{background:#fff!important}
+html .banner[style*="background"] .lead{color:#555!important;font-style:italic}
+html .phone{--nero:#1a0f12;--avorio:#f4ede2;--oro:#c9a24a;--bordeaux:#7a1f35;--grigio:#a99a9f}
+
+/* Il piatto e il suo vino: foto sopra, titolo sotto; riquadro del vino nei colori del tema. */
+html .piatto-hero{min-height:0!important;display:flex;flex-direction:column;align-items:stretch}
+html .piatto-hero .piatto-foto{position:relative;inset:auto;order:0;width:100%;height:clamp(260px,42vw,560px)}
+html .piatto-hero .credito{position:static;order:1;align-self:flex-end;padding:6px 20px 0;color:#666;opacity:1}
+html .piatto-hero .credito a{color:#666}
+html .piatto-hero .wrap{order:2}
+html .piatto-hero .txt{padding:28px 0 44px!important}
+html .consiglio{background:#f7f6f3;color:#111;border-radius:0;border:0;border-top:3px solid var(--accento)}
+html .consiglio .eyebrow{color:#333}
+html .consiglio p+p{color:#555}
+html .consiglio a{color:#111}
+
+/* Ciak, si beve: foto sopra, titolo sotto, schede senza angoli arrotondati. */
+html .ciak-hero{background:#fff;color:#111;display:flex;flex-direction:column;border-bottom:1px solid #111}
+html .ciak-hero img{position:relative;inset:auto;width:100%;height:clamp(260px,42vw,560px);opacity:1}
+html .ciak-hero .wrap{width:100%;padding-top:32px;padding-bottom:40px;text-shadow:none}
+html .ciak-dati strong{opacity:1;color:#666}
+html .ciak-card{border-radius:0;border-color:#ddd;color:#111}
+html .ciak-card .im{background:var(--notte)}
+html .ciak-trailer{border-radius:0}
+html .ciak-play{border-radius:0;background:#111;color:#fff}
+
+@media (max-width:700px){html .piatto-hero .piatto-foto,html .ciak-hero img{height:auto;aspect-ratio:16/9}}
