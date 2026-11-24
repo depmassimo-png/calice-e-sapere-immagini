@@ -54,7 +54,21 @@ function titoloCliccabile(t) {
   if (!href || href.indexOf("http") === 0) return t;
   const apre = h2.indexOf(">") + 1;
   const nuovo = h2.slice(0, apre) + '<a class="lato-tit" href="' + href + '">' + h2.slice(apre, h2.length - 5) + "</a></h2>";
-  return t.slice(0, a) + nuovo + t.slice(b + 5);
+  return pulsanti(t.slice(0, a) + nuovo + t.slice(b + 5), href);
+}
+
+// Uno standard solo per la colonna laterale, come su Quanta: niente pulsanti.
+// Il pulsante che porta dove porta gia il titolo sparisce; gli altri (archivio, app) diventano
+// un link di servizio uniforme "lato-piu" (maiuscoletto, freccia rossa).
+function pulsanti(t, hrefTitolo) {
+  return t.replace(/<a [^>]*>[^<]*<[/]a>/g, function (x) {
+    const apertura = x.slice(0, x.indexOf(">") + 1);
+    if (!/class=.[^"']*btn/.test(apertura)) return x;
+    const m = /href=["']([^"']+)["']/.exec(apertura);
+    const href = m ? m[1] : "";
+    if (href === hrefTitolo) return "";
+    return x.replace(/class=["'][^"']*["']/, 'class="lato-piu"');
+  });
 }
 
 function impagina(h) {
@@ -71,7 +85,8 @@ function impagina(h) {
   }
   if (!per.percorso) return { h: h, esito: "saltata: percorso non trovato" };
   const principale = [per.percorso, per.rubriche, per.strumenti].concat(altre).filter(Boolean).join("");
-  const laterale = [per.novita, per.vino, per.frase, per.invigna, per.cantinapp, per.quiz].filter(Boolean).map(titoloCliccabile).join("");
+  const novita = per.novita ? per.novita.split('<a href="/novita">').join('<a class="lato-piu" href="/novita">') : "";
+  const laterale = [novita, per.vino, per.frase, per.invigna, per.cantinapp, per.quiz].filter(Boolean).map(titoloCliccabile).join("");
   const blocco = '<div class="home-grid"><div class="home-main">' + principale + '</div><aside class="home-lato" aria-label="In evidenza">' + laterale + "</aside></div>";
   // tolgo le sezioni dalla fine all'inizio, poi metto il blocco al posto della prima
   let out = h;

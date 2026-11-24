@@ -264,3 +264,12 @@ html .rub-tx{padding-bottom:4px}
 /* Colonna laterale: i titoli dei blocchi sono link (24/11/2026). */
 html .home-lato h2 a.lato-tit{color:#111;text-decoration:none}
 html .home-lato h2 a.lato-tit:hover{text-decoration:underline;text-decoration-color:var(--accento);text-underline-offset:5px}
+
+/* Colonna laterale con uno standard unico, come Quanta (24/11/2026): nessuna sottolineatura a riposo, nessun pulsante.
+   Titoli dei blocchi e degli articoli: carattere dei titoli, nero; al passaggio del mouse sottolineatura rossa.
+   Link di servizio (archivio, app): maiuscoletto Instrument Sans con freccia rossa. */
+html .home-lato a{text-decoration:none}
+html .home-lato a:hover{text-decoration:underline;text-decoration-color:var(--accento);text-decoration-thickness:1.5px;text-underline-offset:5px}
+html .home-lato a.lato-piu,html .home-lato section.vino a.lato-piu{display:inline-block;font-family:var(--sans);font-size:.74rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#111;background:none;border:0;padding:0;margin:4px 18px 0 0}
+html .home-lato a.lato-piu::after{content:" →";color:var(--accento)}
+html .home-lato p:empty{display:none}
