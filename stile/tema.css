@@ -218,3 +218,31 @@ html .ciak-trailer{border-radius:0}
 html .ciak-play{border-radius:0;background:#111;color:#fff}
 
 @media (max-width:700px){html .piatto-hero .piatto-foto,html .ciak-hero img{height:auto;aspect-ratio:16/9}}
+
+/* Home su due colonne, come le riviste (24/11/2026). La struttura la crea stile/impagina.js durante la costruzione. */
+html .home-grid{max-width:1180px;margin:0 auto;padding:0 20px;display:grid;grid-template-columns:minmax(0,1fr) 320px;column-gap:56px;align-items:start}
+html .home-main section.blk{padding:56px 0;border-top:1px solid #ddd;background:#fff}
+html .home-main section.blk:first-child{border-top:0}
+html .home-main .wrap{max-width:none;padding:0}
+html .home-lato{border-left:1px solid #ddd;padding:56px 0 56px 32px;display:grid;align-content:start}
+html .home-lato section.blk{padding:22px 0 26px;border-top:2px solid #111;background:transparent;color:#111}
+html .home-lato section.blk:first-child{border-top:0;padding-top:0}
+html .home-lato .wrap{max-width:none;padding:0!important;display:block}
+html .home-lato .wrap > div{display:grid;gap:10px}
+html .home-lato .head{margin-bottom:12px}
+html .home-lato h2{font-size:1.4rem;line-height:1.15;margin:0}
+html .home-lato .prose,html .home-lato .vglass,html .home-lato .ca-shot,html .home-lato .head p{display:none}
+html .home-lato section.vino{background:transparent;color:#111}
+html .home-lato section.vino h2,html .home-lato section.vino a{color:#111}
+html .home-lato section.vino .eyebrow{color:#333;border-bottom-color:var(--accento)}
+html .home-lato section.vino .small,html .home-lato section.vino .muted{color:#555}
+html .home-lato .btn,html .home-lato section.vino .btn,html .home-lato section.chiaro .btn{background:transparent;color:#111;border:1.5px solid var(--accento);padding:8px 14px;font-size:.85rem}
+html .home-lato .btn:hover{background:var(--accento);color:#fff}
+html .home-lato .btn::after{content:" →"}
+html .home-lato .btn.ghost,html .home-lato section.vino .btn.ghost{border:0;padding:8px 0;text-decoration:underline;text-underline-offset:4px}
+html .home-lato .btn.ghost::after{content:""}
+html .home-lato .novita-home{grid-template-columns:1fr!important;margin-top:8px}
+html .home-lato .diario li{padding:10px 0}
+html .home-lato .diario li a{font-family:var(--display);font-size:1.08rem;line-height:1.25}
+html .banner + .home-grid{margin-top:0}
+@media (max-width:900px){html .home-grid{display:block}html .home-main section.blk{padding:48px 0}html .home-lato{border-left:0;border-top:1px solid #ddd;padding:40px 0 48px}}
