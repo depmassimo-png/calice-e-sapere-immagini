@@ -273,3 +273,16 @@ html .home-lato a:hover{text-decoration:underline;text-decoration-color:var(--ac
 html .home-lato a.lato-piu,html .home-lato section.vino a.lato-piu{display:inline-block;font-family:var(--sans);font-size:.74rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#111;background:none;border:0;padding:0;margin:4px 18px 0 0}
 html .home-lato a.lato-piu::after{content:" →";color:var(--accento)}
 html .home-lato p:empty{display:none}
+
+/* Schede alla Quanta (25/11/2026): filetto scuro sopra ogni scheda, poco spazio tra immagine e testo, molto spazio tra una riga e la successiva,
+   descrizioni in carattere senza grazie e non in corsivo. Vale per le tappe del percorso, le rubriche e gli strumenti. */
+html #tiles{row-gap:48px;column-gap:28px}
+html .tile{border-top:2px solid #111;padding-top:12px;align-content:start}
+html .tile .t{padding:12px 0 0}
+html .tile .t h3{margin:0 0 6px;line-height:1.2}
+html .tile .t p,html .acard p,html .rub-sum{font-family:var(--sans);font-style:normal;font-size:.9rem;line-height:1.5;color:#555}
+html section.vino .acard p{color:#dfe4ee}
+html .rub-griglia{row-gap:52px}
+html .rub-card{border-top:2px solid #111;padding-top:12px}
+html .rub-tx{padding-top:12px}
+html .grid.g3:has(> .acard){row-gap:36px}
