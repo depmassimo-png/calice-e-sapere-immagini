@@ -251,3 +251,12 @@ html .banner + .home-grid{margin-top:0}
    L'immagine riempie il riquadro e viene ritagliata; resta valido l'object-position scritto nella pagina (es. ritratto della marchesa). */
 html .rub-img{position:relative;height:auto;aspect-ratio:3/2;overflow:hidden}
 html .rub-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+
+/* Punto 2 del confronto con Quanta (24/11/2026): schede delle rubriche semplificate. Etichetta, titolo, firma, sommario.
+   Via la descrizione della rubrica (si legge nella pagina della rubrica) e il link finale (titolo e immagine sono gia cliccabili).
+   La riga della firma la scrive impagina.js: "Di Nome" per gli autori dichiarati, altrimenti "Dalla Redazione". */
+html .rub-card .rub-desc,html .rub-card .rub-link{display:none}
+html .rub-card h3{margin-bottom:0}
+html .rub-firma{font-family:var(--sans);font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#666;margin:0}
+html .rub-firma span{color:var(--accento);margin:0 .25em}
+html .rub-tx{padding-bottom:4px}
