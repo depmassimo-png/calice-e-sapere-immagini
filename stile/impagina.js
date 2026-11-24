@@ -78,18 +78,23 @@ function datiArticolo(PUB, href) {
   const f = prove.find(p => fs.existsSync(p));
   if (!f) return null;
   const h = fs.readFileSync(f, "utf8");
-  const parti = h.split('<script data-seo-plus type="application/ld+json">');
+  // tutti i blocchi JSON-LD, qualunque siano gli altri attributi del tag script
+  const parti = h.split("application/ld+json");
+  let trovato = null;
   for (let i = 1; i < parti.length; i++) {
-    const testo = parti[i].slice(0, parti[i].indexOf("</script>"));
+    const inizio = parti[i].indexOf(">") + 1;
+    const testo = parti[i].slice(inizio, parti[i].indexOf("</script>"));
     try {
       const j = JSON.parse(testo);
       if (j["@type"] !== "Article") continue;
       const a = j.author;
       const nome = a && a["@type"] === "Person" && a.name ? a.name : "";
-      return { nome: nome, data: dataIt(j.datePublished || j.dateModified) };
+      const dati = { nome: nome, data: dataIt(j.datePublished || j.dateModified) };
+      if (nome) return dati; // un autore dichiarato vale piu di un blocco senza autore
+      if (!trovato) trovato = dati;
     } catch (e) {}
   }
-  return { nome: "", data: "" };
+  return trovato || { nome: "", data: "" };
 }
 
 function firme(PUB, h) {
