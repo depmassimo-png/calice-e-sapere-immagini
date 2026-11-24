@@ -40,6 +40,23 @@ function tipo(t) {
   return "altro";
 }
 
+// Nella colonna laterale il titolo di ogni blocco diventa un link alla stessa pagina del primo pulsante del blocco
+// (24/11/2026, segnalato da Massimo: "molti titoli non risultano cliccabili").
+function titoloCliccabile(t) {
+  const a = t.indexOf("<h2");
+  if (a < 0) return t;
+  const b = t.indexOf("</h2>", a);
+  if (b < 0) return t;
+  const h2 = t.slice(a, b + 5);
+  if (h2.indexOf("<a ") >= 0) return t;
+  const m = /<a [^>]*class=.btn[^>]*href=.([^"' >]+)|<a [^>]*href=.([^"' >]+)[^>]*class=.btn/.exec(t);
+  const href = m ? (m[1] || m[2]) : "";
+  if (!href || href.indexOf("http") === 0) return t;
+  const apre = h2.indexOf(">") + 1;
+  const nuovo = h2.slice(0, apre) + '<a class="lato-tit" href="' + href + '">' + h2.slice(apre, h2.length - 5) + "</a></h2>";
+  return t.slice(0, a) + nuovo + t.slice(b + 5);
+}
+
 function impagina(h) {
   const m1 = h.indexOf("<main>");
   const m2 = h.indexOf("</main>");
@@ -54,7 +71,7 @@ function impagina(h) {
   }
   if (!per.percorso) return { h: h, esito: "saltata: percorso non trovato" };
   const principale = [per.percorso, per.rubriche, per.strumenti].concat(altre).filter(Boolean).join("");
-  const laterale = [per.novita, per.vino, per.frase, per.invigna, per.cantinapp, per.quiz].filter(Boolean).join("");
+  const laterale = [per.novita, per.vino, per.frase, per.invigna, per.cantinapp, per.quiz].filter(Boolean).map(titoloCliccabile).join("");
   const blocco = '<div class="home-grid"><div class="home-main">' + principale + '</div><aside class="home-lato" aria-label="In evidenza">' + laterale + "</aside></div>";
   // tolgo le sezioni dalla fine all'inizio, poi metto il blocco al posto della prima
   let out = h;
