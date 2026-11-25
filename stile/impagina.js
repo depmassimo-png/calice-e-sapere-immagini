@@ -126,7 +126,26 @@ function datiArticolo(PUB, href) {
       if (!trovato) trovato = dati;
     } catch (e) {}
   }
-  return trovato || { nome: "", data: "" };
+  const esito = trovato || { nome: "", data: "" };
+  if (!esito.data) esito.data = dataDaContenuti(pulito);
+  return esito;
+}
+
+// Riserva per la data (25/11/2026): se la pagina non ha datePublished nei dati strutturati
+// (oggi Voci del vino), la prende dal campo "data" (AAAA-MM-GG) del file sorgente content/<cartella>/<slug>.json.
+function dataDaContenuti(href) {
+  try {
+    const slug = href.split("/").pop();
+    if (!slug || !fs.existsSync("content")) return "";
+    for (const cartella of fs.readdirSync("content")) {
+      const f = path.join("content", cartella, slug + ".json");
+      if (!fs.existsSync(f)) continue;
+      const j = JSON.parse(fs.readFileSync(f, "utf8"));
+      const d = dataIt(j.data);
+      if (d) return d;
+    }
+  } catch (e) {}
+  return "";
 }
 
 function firme(PUB, h) {
