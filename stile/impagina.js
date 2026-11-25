@@ -167,33 +167,6 @@ function firme(PUB, h) {
   return { h: pezzi.join('<article class="rub-card">'), esito: r };
 }
 
-
-// Calice animato nell'apertura della home (25/11/2026, scelta di Massimo): calice da degustazione a tulipano
-// che passa da bollicine a bianco, rosato e rosso (ordine di servizio). Sostituisce il flute della fascia
-// "Il vino della settimana", che viene tolto. Colori e movimento sono in tema.css (blocco .calice-anim).
-const CALICE_SVG = '<svg viewBox="270 50 140 300" role="presentation" focusable="false">' +
-  '<defs><clipPath id="calice-coppa"><path d="M305 60 C300 100 285 130 290 160 C295 190 320 207 340 207 C360 207 385 190 390 160 C395 130 380 100 375 60 Z"/></clipPath></defs>' +
-  '<g clip-path="url(#calice-coppa)"><rect class="cal-liq" x="280" y="135" width="120" height="80"/>' +
-  '<ellipse class="cal-sup" cx="340" cy="135" rx="49" ry="5"/>' +
-  '<g class="cal-bol"><circle cx="330" cy="200" r="1.8"/><circle cx="344" cy="198" r="1.4"/><circle cx="352" cy="202" r="1.6"/><circle cx="338" cy="203" r="1.2"/><circle cx="324" cy="196" r="1.3"/></g></g>' +
-  '<path class="cal-vetro" d="M305 60 C300 100 285 130 290 160 C295 190 320 207 340 207 C360 207 385 190 390 160 C395 130 380 100 375 60"/>' +
-  '<path class="cal-vetro" d="M340 207 L340 298"/><ellipse class="cal-vetro" cx="340" cy="302" rx="44" ry="7"/>' +
-  '<text x="340" y="336" class="cal-n cal-n1">Bollicine</text><text x="340" y="336" class="cal-n cal-n2">Bianco</text>' +
-  '<text x="340" y="336" class="cal-n cal-n3">Rosato</text><text x="340" y="336" class="cal-n cal-n4">Rosso</text></svg>';
-
-function calice(h) {
-  const r = { aggiunto: false, flute_tolto: false };
-  const home = h.indexOf('id="p-home"');
-  const txt = home >= 0 ? h.indexOf('<div class="txt"', home) : -1;
-  if (txt >= 0 && h.indexOf("calice-anim") < 0) {
-    h = h.slice(0, txt) + '<div class="calice-anim" aria-hidden="true">' + CALICE_SVG + "</div>" + h.slice(txt);
-    r.aggiunto = true;
-  }
-  const v = /<div class="vglass"[^>]*><[/]div>/;
-  if (v.test(h)) { h = h.replace(v, ""); r.flute_tolto = true; }
-  return { h: h, esito: r };
-}
-
 module.exports = function (PUB) {
   const f = path.join(PUB, "index.html");
   if (!fs.existsSync(f)) return "saltata: index.html mancante";
@@ -207,14 +180,8 @@ module.exports = function (PUB) {
     out = fr.h;
     esito += "; firme " + JSON.stringify(fr.esito);
   } catch (e) { esito += "; firme: errore " + String(e && e.message || e); }
-  try {
-    const c = calice(out);
-    out = c.h;
-    esito += "; calice " + JSON.stringify(c.esito);
-  } catch (e) { esito += "; calice: errore " + String(e && e.message || e); }
   if (out !== h) fs.writeFileSync(f, out);
   return esito;
 };
 module.exports.impagina = impagina;
 module.exports.firme = firme;
-module.exports.calice = calice;

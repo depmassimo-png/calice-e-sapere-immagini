@@ -296,33 +296,3 @@ html #brandIco svg,html #brandIco2 svg{display:none!important}
 /* Aperture sugli schermi larghi (25/11/2026): proporzione 21:9 fino al 70% dell'altezza della finestra, calice intero in home */
 html .banner .art{height:clamp(260px,min(42.86vw,70vh),1100px)}
 @media (min-width:701px){html #p-home .banner .art[data-ill="hero"]{aspect-ratio:auto;background-position:center 66%}}
-
-/* Calice animato nell'apertura della home (25/11/2026, scelta di Massimo): a destra del titolo, solo sugli schermi da 1100 px in su.
-   Ordine di servizio: bollicine, bianco, rosato, rosso; 4 secondi ciascuno. Il flute della fascia del vino della settimana non c'e piu. */
-html #p-home .banner .wrap{position:relative}
-html .calice-anim{display:none}
-@media (min-width:1100px){html #p-home .calice-anim{display:block;position:absolute;right:20px;top:50%;transform:translateY(-50%);width:clamp(130px,11vw,190px);pointer-events:none}}
-html .calice-anim svg{display:block;width:100%;height:auto;overflow:visible}
-html .calice-anim .cal-vetro{fill:none;stroke:#d8c9ae;stroke-width:3;stroke-linejoin:round;stroke-linecap:round}
-html .calice-anim .cal-liq{fill:#eee4a6;animation:cal-liq 16s infinite}
-html .calice-anim .cal-sup{fill:#f7f0c8;animation:cal-sup 16s infinite}
-html .calice-anim .cal-bol{fill:#fffbe6;animation:cal-bol 16s infinite}
-html .calice-anim .cal-bol circle{animation:cal-sale 2.2s linear infinite}
-html .calice-anim .cal-bol circle:nth-child(2){animation-delay:.6s}
-html .calice-anim .cal-bol circle:nth-child(3){animation-delay:1.2s}
-html .calice-anim .cal-bol circle:nth-child(4){animation-delay:1.7s}
-html .calice-anim .cal-bol circle:nth-child(5){animation-delay:.9s}
-html .calice-anim .cal-n{font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;fill:#555;text-anchor:middle;opacity:0;animation:16s infinite}
-html .calice-anim .cal-n1{animation-name:cal-n1}
-html .calice-anim .cal-n2{animation-name:cal-n2}
-html .calice-anim .cal-n3{animation-name:cal-n3}
-html .calice-anim .cal-n4{animation-name:cal-n4}
-@keyframes cal-liq{0%,20%{fill:#eee4a6}25%,45%{fill:#e2c65f}50%,70%{fill:#ec8f80}75%,95%{fill:#8b1a2c}100%{fill:#eee4a6}}
-@keyframes cal-sup{0%,20%{fill:#f7f0c8}25%,45%{fill:#eed98c}50%,70%{fill:#f3aea2}75%,95%{fill:#a8344a}100%{fill:#f7f0c8}}
-@keyframes cal-bol{0%,19%{opacity:1}24%,97%{opacity:0}100%{opacity:1}}
-@keyframes cal-sale{0%{transform:translateY(0);opacity:0}15%{opacity:.9}100%{transform:translateY(-62px);opacity:0}}
-@keyframes cal-n1{0%,20%{opacity:1}24%,97%{opacity:0}100%{opacity:1}}
-@keyframes cal-n2{0%,22%{opacity:0}26%,45%{opacity:1}49%,100%{opacity:0}}
-@keyframes cal-n3{0%,47%{opacity:0}51%,70%{opacity:1}74%,100%{opacity:0}}
-@keyframes cal-n4{0%,72%{opacity:0}76%,95%{opacity:1}99%,100%{opacity:0}}
-@media (prefers-reduced-motion:reduce){html .calice-anim *{animation:none!important}html .calice-anim .cal-liq{fill:#8b1a2c}html .calice-anim .cal-sup{fill:#a8344a}html .calice-anim .cal-bol,html .calice-anim .cal-n{opacity:0}}
