@@ -308,3 +308,6 @@ html .wrap,html .home-grid{max-width:1400px}
 html .wrap.articolo{grid-template-columns:minmax(0,820px) 360px;column-gap:72px;justify-content:start}
 html .wrap.articolo > .prose,html .wrap.articolo .prose.testo{max-width:820px}
 }
+
+/* Foto dei racconti di Visite in cantina larghe quanto il testo (27/11/2026, prova chiesta da Massimo). */
+@media (min-width:901px){html .vis-foto img,html .vis-foto figcaption{max-width:820px}}
